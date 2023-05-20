@@ -11,6 +11,7 @@ namespace ConsoleApp5.Model
     internal class ApplicationDbContext : DbContext
     {
         public DbSet<Picture> Picture_p { get; set; }
+        public DbSet<Author> Author_p { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=Galary;Integrated Security=True");
