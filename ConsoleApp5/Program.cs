@@ -8,18 +8,24 @@ using (ApplicationDbContext adc = new ApplicationDbContext()){
     ads.AddAuthor(new Author() { Name = "Vincent Villiam Vangog", YearOfBorn = 1853 });
     Author? Vangog = adc.Author_p.FirstOrDefault(i => i.Name == "Vincent Villiam Vangog");
     Console.WriteLine(Vangog);
-    pds.AddPicture(new Picture() { Name_p = "Zvezdnaya Noch", Year_p = 1889, Author = Vangog});
-    //pds.AddPicture(new Picture() { Name_p = "Avtoportret", Year_p = 1889, author = adc.Author_p
-    //    .FirstOrDefault(i => i.Name == "Vincent Villiam Vangog")
-    //});
-    //pds.AddPicture(new Picture() { Name_p = "Irisi", Year_p = 1889, author = adc.Author_p
-    //    .FirstOrDefault(i => i.Name == "Vincent Villiam Vangog")
-    //});
-    //Author Vinci = new Author() { Name = "Leoanrdo da Vinci", YearOfBorn = 1452 };
-    //ads.AddAuthor(Vinci);
-    //pds.AddPicture(new Picture() { Name_p = "Tainaya vecherya", Year_p = 1498, author = Vinci });
-    //pds.AddPicture(new Picture() { Name_p = "Spasitel mira", Year_p = 1500, author = Vinci });
-    //pds.AddPicture(new Picture() { Name_p = "Dama s gornostaem", Year_p = 1489, author = Vinci });
+    pds.AddPicture(new Picture() { Name_p = "Zvezdnaya Noch", Year_p = 1889, AuthorId = Vangog.Id});
+    pds.AddPicture(new Picture()
+    {
+        Name_p = "Avtoportret",
+        Year_p = 1889,
+        AuthorId = Vangog.Id
+    });
+    pds.AddPicture(new Picture()
+    {
+        Name_p = "Irisi",
+        Year_p = 1889,
+        AuthorId = Vangog.Id
+    });
+    Author Vinci = new Author() { Name = "Leoanrdo da Vinci", YearOfBorn = 1452 };
+    ads.AddAuthor(Vinci);
+    pds.AddPicture(new Picture() { Name_p = "Tainaya vecherya", Year_p = 1498, AuthorId = Vinci.Id });
+    pds.AddPicture(new Picture() { Name_p = "Spasitel mira", Year_p = 1500, AuthorId = Vinci.Id });
+    pds.AddPicture(new Picture() { Name_p = "Dama s gornostaem", Year_p = 1489, AuthorId = Vinci.Id });
     var PictureList = pds.ListAll();
     foreach (var picture in PictureList)
     {
